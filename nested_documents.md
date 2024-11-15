@@ -18,4 +18,10 @@ to fetch a review, we need just 1 query at once.
 ```
 db.collection_name.find( {rating: {$in: [7,8,9]}} )
 ```
-fetch the items that are within the range we passed in.
+fetch the items that have ratings that are within the range we passed in.
+
+```
+db.collection_name.find( {rating: {$nin: [7,8,9]}} )
+```
+
+fetch the items that have ratings that are within the range we passed in.
