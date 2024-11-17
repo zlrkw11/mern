@@ -10,9 +10,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.json({ mssg: "Welcome to the app" });
-});
+// attach all routes to app
+app.use("/api/workouts", workoutRoutes);
 
 // listen for requests
 app.listen(process.env.PORT, () => {
