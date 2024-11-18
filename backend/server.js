@@ -17,12 +17,11 @@ app.use("/api/workouts", workoutRoutes);
 //connect to db
 mongoose
   .connect("process.env.MONGO_URI")
-  .then(() => {})
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      console.log("listening on port 4000!");
+    });
+  })
   .catch((error) => {
     console.log(error);
   });
-
-// listen for requests
-app.listen(process.env.PORT, () => {
-  console.log("listening on port 4000!");
-});
