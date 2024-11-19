@@ -22,7 +22,9 @@ router.post("/", async (req, res) => {
       reps,
     });
     res.status(200).json(workout);
-  } catch (error) {}
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
   res.json({ mssg: "POST a new workout" });
 });
 
