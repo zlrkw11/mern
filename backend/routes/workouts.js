@@ -25,7 +25,6 @@ router.post("/", async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
-  res.json({ mssg: "POST a new workout" });
 });
 
 // DELETE a workout
