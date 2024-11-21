@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose");
 const Workout = require("../models/workoutModel");
 
 // get all workouts
@@ -9,6 +10,9 @@ const getWorkouts = async (req, res) => {
 // get a single workout
 const getWorkout = async (req, res) => {
   const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such workout" });
+  }
   const workout = await Workout.findById(id);
   if (!workout) {
     return res.status(404).json({ error: "No such workout" });
@@ -32,10 +36,17 @@ const createWorkout = async (req, res) => {
 };
 
 // delete a workout
-
+const deleteWorkout = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such workout" });
+  }
+  const workout = await Workout.findOneAndDelete({ _id: id });
+};
 // update a workout
 
 module.exports = {
   getWorkouts,
   createWorkout,
+  getWorkout,
 };
