@@ -1,6 +1,9 @@
 const WorkoutDetails = ({ workout }) => {
   const handleClick = async () => {
-    const response = await fetch("/api/workouts/" + workout._id);
+    const response = await fetch("/api/workouts/" + workout._id, {
+      method: "DELETE",
+    });
+    const json = await response.json();
   };
   return (
     <div className="workout-details">
