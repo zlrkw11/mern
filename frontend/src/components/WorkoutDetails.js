@@ -4,6 +4,9 @@ const WorkoutDetails = ({ workout }) => {
       method: "DELETE",
     });
     const json = await response.json();
+    if (response.ok) {
+      console.log("deleted");
+    }
   };
   return (
     <div className="workout-details">
