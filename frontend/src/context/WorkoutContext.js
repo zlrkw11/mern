@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-const WorkoutsContext = createContext();
+export const WorkoutsContext = createContext();
