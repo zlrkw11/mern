@@ -1,10 +1,14 @@
 const WorkoutDetails = ({ workout }) => {
+  const handleClick = async () => {
+    const response = await fetch("/api/workouts/" + workout._id);
+  };
   return (
     <div className="workout-details">
       <h4>{workout.title}</h4>
       <p>Load(kg): {workout.load}</p>
       <p>Reps: {workout.reps}</p>
       <p>Created at: {workout.createdAt}</p>
+      <span onClick={handleClick}>delete</span>
     </div>
   );
 };
